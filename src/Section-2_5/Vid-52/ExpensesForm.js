@@ -42,7 +42,7 @@ const ExpenseForm = (props) => {
 
 
 const addToList = () => {
-  axios.post("http://localhost:5000/insert/", {
+  axios.post("https://resumeexpensetracker.herokuapp.com/insert/", {
     title: enteredTitle,
     amount: enteredAmount,
     date: enteredDate,
