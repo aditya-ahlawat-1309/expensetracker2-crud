@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 
+import axios from "axios";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
@@ -34,6 +36,22 @@ const ExpenseForm = (props) => {
     setEnteredAmount("");
     setEnteredDate("");
   };
+
+
+
+
+
+const addToList = () => {
+  axios.post("http://localhost:5000/insert/", {
+    title: enteredTitle,
+    amount: enteredAmount,
+    date: enteredDate,
+  });
+};
+
+
+
+
 
   return (
     <form onSubmit={submitHandler}>
@@ -71,7 +89,9 @@ const ExpenseForm = (props) => {
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button type="submit">Add Expense</button>
+        <button type="submit" onClick={addToList}>
+          Add Expense
+        </button>
       </div>
     </form>
   );
